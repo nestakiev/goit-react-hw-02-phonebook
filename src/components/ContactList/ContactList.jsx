@@ -1,13 +1,19 @@
 import PropTypes from "prop-types";
+import { P, Li, DelButton } from "./ContactList.styled";
 
 export const ContactList = ({contacts, onDelete}) => {
+    const isContactsEmpty = contacts.length > 0;
     return (
-    <ul>
-{contacts.map(a => <li key={a.id}>
-    <p>{a.name}: {a.number}</p>
-    <button type="button" key={a.id} onClick={() => onDelete(a.id)}>Delete</button>
-    </li>)}
-    </ul>)
+    isContactsEmpty ? 
+    <ul>{contacts.map(a => <Li key={a.id}>
+        <P>{a.name}: {a.number}</P>
+        <DelButton type="button" key={a.id} onClick={() => onDelete(a.id)}>Delete</DelButton> 
+        </Li>)}
+    </ul>
+    : <p>You dont have any contacts or matches</p>
+    
+    )
+
 };
 
 ContactList.propTypes = {

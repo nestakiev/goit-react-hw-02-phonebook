@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { ContactForm } from "./ContactForm/ContactForm";
 import { ContactList } from "./ContactList/ContactList";
 import { Filter } from "./Filter/Filter";
+import { Container } from "./App.styled";
 import shortid from "shortid";
 
 export class App extends Component {
@@ -52,7 +53,7 @@ export class App extends Component {
 
   return (
     
-      <div>
+      <Container>
     <h1>Phonebook</h1>
     <ContactForm addContact={this.addNewContact}/>
 
@@ -60,7 +61,7 @@ export class App extends Component {
     <Filter onChange={e => this.setState({filter: e.target.value})}
             value={this.state.filter}/>
     <ContactList contacts={filtredContacts} onDelete={this.deleteContact}/>
-      </div>
+      </Container>
     
   );
     }
